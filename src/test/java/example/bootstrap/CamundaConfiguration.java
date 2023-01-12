@@ -65,6 +65,8 @@ public class CamundaConfiguration {
     public JavaDelegate compensateADelegate() {
         return (execution) -> {
             logger.info(">>> executing compensateADelegate");
+            Thread.sleep(3000);
+            logger.info(">>> done compensateADelegate");
         };
     }
 
@@ -79,6 +81,8 @@ public class CamundaConfiguration {
     public JavaDelegate compensateBDelegate() {
         return (execution) -> {
             logger.info(">>> executing compensateBDelegate");
+            Thread.sleep(1000);
+            logger.info(">>> done compensateBDelegate");
         };
     }
 

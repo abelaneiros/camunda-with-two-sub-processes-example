@@ -69,10 +69,10 @@ public class CamundaFlowTest {
 
         assertThat(processInstance).isEnded();
         assertThat(processInstance).hasPassedInOrder(
+                "request_event",
                 "start_event",
                 "call_a",
                 "call_b",
-                "send_audit_msg_ok",
                 "audit",
                 "end_event");
     }
@@ -84,15 +84,17 @@ public class CamundaFlowTest {
 
         assertThat(processInstance).isEnded();
         assertThat(processInstance).hasPassedInOrder(
+                "request_event",
                 "start_event",
                 "call_a",
                 "call_b",
                 "throw_error",
-                "compensate_b",
-                "compensate_a",      // TODO: not executed, why?
                 "handle_error",
-                "send_audit_msg_ko", // TODO: exception is throw, check logs
+                "trigger_compensation",
+                "error_handled",
                 "audit",
                 "end_event");
+        // compensations are executed in random order
+        assertThat(processInstance).hasPassed("compensate_a", "compensate_b");
     }
 }
