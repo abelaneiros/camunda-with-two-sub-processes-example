@@ -10,6 +10,6 @@ In the following image I marked 2 path:
 
 ![Camunda model with paths](model-with-paths.png)
 
-SOLUTION (in **fixed** branch):
+SOLUTION (in **solution** branch):
 
 ![Camunda model fixed](model-fixed.png)
